@@ -12,7 +12,7 @@ userRouter.get('/requests/received' , userAuth , async (req , res) => {
         const connectionRequest = await ConnectionRequest.find({
             toUserId: loggedInUser._id,
             status: 'interested'
-    }).populate('fromUserId', 'firstName lastName photoURL age gender skills about');
+    }).populate('fromUserId' , USER_SAFE_DATA);
 
     res.status(200).json({ 
         success: true,

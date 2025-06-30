@@ -2,11 +2,14 @@ const express = require('express');
 const connectDB = require('./config/database');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const http = require('http');
 const dotenv = require('dotenv');
 const authRouter = require('./routes/auth');
 const profileRouter = require('./routes/profile');
 const requestsRouter = require('./routes/request');
 const userRouter = require('./routes/user');
+const chatRouter = require('./routes/chat');
+const initializeSocket = require('./utils/socket');
 
 
 dotenv.config();
@@ -24,6 +27,7 @@ app.use('/api/auth' , authRouter);
 app.use('/api/profile' , profileRouter);
 app.use('/api/request' , requestsRouter);
 app.use('/api/user' , userRouter);
+app.use('/api/chat' , chatRouter);
 
 app.get("/", (req, res) => {
   res.send("Dev Tinder API is running");
@@ -31,8 +35,12 @@ app.get("/", (req, res) => {
 
 const port =  process.env.PORT || 7777;
 
+const server = http.createServer(app);
+initializeSocket(server);
+
+
 connectDB().then(() => {
-    app.listen(port , () => {
+    server.listen(port , () => {
         console.log(`Server is running on port ${port}`)
     });
 }).catch((error) => {

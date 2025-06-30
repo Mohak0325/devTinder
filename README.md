@@ -1,6 +1,6 @@
 # DevTinder 👥💻
 
-**DevTinder** is a full-stack MERN application that allows developers to connect with one another through a friend request system. Users can send connection requests, view pending requests, manage accepted connections, and securely authenticate.
+**DevTinder** is a full-stack MERN application that allows developers to connect with one another through a friend request system. Users can send connection requests, view pending requests, manage accepted connections, and securely authenticate.It also includes a real-time chat feature built using WebSocket and Socket.IO, enabling seamless one-on-one communication between connected users.
 
 ---
 
@@ -17,6 +17,7 @@
 - Node.js + Express
 - MongoDB + Mongoose
 - JWT (for authentication)
+- Socket.IO
 
 ---
 
@@ -31,6 +32,10 @@
 - 👥 **Connections**
   - View your pending requests
   - See your active connections
+- 💬 **Real-Time Chat**
+  - Chat with connected users
+  - Real-time message delivery using WebSocket + Socket.IO
+  - Responsive chat UI with auto-scroll
 
 ---
 ### 🔧 Installation
